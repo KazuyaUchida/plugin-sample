@@ -1,18 +1,21 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.kazuyauchida.pluginsample</id>
-    <name>IntelliJ Platform Plugin plugin-sample</name>
-    <vendor>kazuyauchida</vendor>
+    <id>com.github.kzyUchida.pluginsample</id>
+    <name>Copy Path Action</name>
+    <vendor>KazuyaUchida</vendor>
+    <description>Plug-in creation trial. reference : https://zenn.dev/ryo_kawamata/articles/d2b5081df86728</description>
 
     <depends>com.intellij.modules.platform</depends>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.kazuyauchida.pluginsample.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.kazuyauchida.pluginsample.services.MyProjectService"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.kazuyauchida.pluginsample.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <!-- copy path -->
+        <action id="com.github.kzyUchida.pluginsample.CopyPathAction"
+                class="com.github.kzyUchida.pluginsample.CopyPathAction"
+                text="Copy Path From Root"
+                description="Copy path from project root"
+                icon="AllIcons.Actions.Copy"
+                >
+            <keyboard-shortcut first-keystroke="control alt C" keymap="$default"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
